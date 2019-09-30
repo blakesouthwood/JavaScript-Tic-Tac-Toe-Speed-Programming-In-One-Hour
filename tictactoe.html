@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script>//8:22  to 9:05  43 minutes have it solved, 20 minutes debugging  afterwards
+/*
+
+ Blake Southwood
+ Tested myself coding in JavaScript Sept 29th, 2019
+ Speed coding demonstration designing, coding, debugging
+ game Tic Tac Toe in JavaScript in less than one hour
+ I stopped once it passed the tests to demonstrate
+ what I can do in less than an hour with no distractions
+ while coding
+
+
+*/
+
+
+ function main(){
+   loader() //testing
+  square_input('1','X')
+  square_input('3','O')
+  square_input('4','X')
+  square_input('9','O')
+  square_input('7','X')
+
+ }
+
+ //1 2 3
+ //4 5 6
+ //7 8 9
+
+ //three across all x's or o's
+ //if 1 == true and 2 == true  and 3 == true tic tac toe
+ //if 4 == true and 5 == true and 6 == true tic tac toe
+ //if 7 == true and 8 == true and 9 == true tic tac toe
+
+ //three//down
+ //if 1 == true and 4 == true  and 7 == true tic tac toe
+ //if 2 == true and 5 == true and 8 == true tic tac toe
+ //if 3 == true and 6 == true and 9 == true tic tac toe
+
+ //diagonal three
+ //if 1 == true and 5== true  and 9 == true tic tac toe
+ //if 3 == true and 5 == true and 7 == true tic tac toe
+
+function loader(){
+square1 = ["-"];
+square2 = ["-"];
+square3 = ["-"];
+
+square4 = ["-"];
+square5 = ["-"];
+square6 = ["-"];
+
+square7 = ["-"];
+square8 = ["-"];
+square9 = ["-"];
+print_board()
+}
+
+function game_over(b){
+alert("end of game winner =" + b)
+
+}
+
+
+
+function win(z){
+  if (z == "x"){
+    alert("x wins") //I can color the winning row with green background
+  }
+}//end function
+
+
+
+//this needs to be called after each move to test
+function look(){
+  alert("look() called")
+  three_across();
+ three_down();
+ three_diagonal();
+}
+
+
+
+// THREE ACROSS
+function three_across(){
+  alert("three across called")
+//2 scenarios x 3
+var result = false;
+
+if (square1[0] == "X" &&  square2[0] == "X" && square3[0] == "X" ) {
+  result = true;
+  win("x wins 1,2,3")
+    game_over('X');
+}
+if (square1[0] == "O" &&  square2[0] == "O" && square3[0] == "O" ) {
+  result = true;
+  win("0 wins 1,2,3")
+    game_over('O');
+}
+
+
+if (square4[0] == "O" &&  square5[0] == "O" && square6[0] == "O" ) {
+  result = true;
+  win("0 wins 4,5,6")
+    game_over('O');
+}
+if (square4[0] == "X" &&  square5[0] == "X" && square6[0] == "X" ) {
+  result = true;
+  win("X wins 4,5,6")
+    game_over('X');
+}
+
+if (square7[0] == "O" &&  square8[0] == "O" && square9[0] == "O" ) {
+  result = true;
+  win("0 wins 7,8,9")
+    game_over('O');
+}
+if (square7[0] == "X" &&  square8[0] == "X" && square9[0] == "X" ) {
+  result = true;
+  win("X wins 7,8,9")
+    game_over('X');
+}
+} //end function
+
+
+
+
+// THREE DOWN
+
+function three_down(){
+  alert('three down called')
+  //if 1 and 4 and 7 == X
+  if (square1[0] == "X" &&  square4[0] == "X" && square7[0] == "X" ) {
+    result = true;
+    alert("X wins 1,4,7")
+    game_over('X');
+  }
+
+  //if 1 and 4 and 7 == 0
+  if (square1[0] == "O" &&  square4[0] == "O" && square7[0] == "O" ) {
+    result = true;
+    alert("O wins 1,4,7")
+    game_over('O');
+  }
+/////
+
+if (square2[0] == "X" &&  square5[0] == "X" && square8[0] == "X" ) {
+  result = true;
+  alert("X wins 1,4,7")
+    game_over('X');
+    return
+}
+
+if (square2[0] == "O" &&  square5[0] == "O" && square8[0] == "O" ) {
+  result = true;
+  win("O wins 2,5,8")
+    game_over('O');
+    return
+}
+
+////
+if (square3[0] == "X" &&  square6[0] == "X" && square9[0] == "X" ) {
+  result = true;
+  win("X wins 3,6,9")
+    game_over('X');
+    return
+}
+if (square3[0] == "O" &&  square6[0] == "O" && square9[0] == "O" ) {
+  result = true;
+  win("X wins 3,6,9")
+    game_over('O');
+    return
+}
+} //end function
+
+
+//THREE DIAGONAL
+function three_diagonal(){
+  alert("three diagonal called")
+  //if 1 and 5 and 9 == X
+  if (square1[0] == "X" &&  square5[0] == "X" && square9[0] == "X" ) {
+    result = true;
+    win("X wins 1,5,9")
+      game_over('X');
+  }
+  if (square1[0] == "O" &&  square5[0] == "O" && square9[0] == "O" ) {
+    result = true;
+    win("O wins 1,5,9")
+      game_over('O');
+  }
+
+  if (square3[0] == "X" &&  square5[0] == "X" && square7[0] == "X" ) {
+    result = true;
+    win("X wins 3,5,7")
+      game_over('X');
+  }
+  if (square3[0] == "O" &&  square5[0] == "O" && square7[0] == "O" ) {
+    result = true;
+    win("O wins 3,5,7")
+      game_over('O');
+  }
+
+} //end function
+
+
+
+
+
+function clear_board(){
+  square1 = ["-"];
+  square2 = ["-"];
+  square3 = ["-"];
+  square4 = ["-"];
+  square5 = ["-"];
+  square6 = ["-"];
+  square7 = ["-"];
+  square8 = ["-"];
+  square9 = ["-"];
+
+print_board();
+}
+
+
+
+function square_input(number,user){  //number 1 thru 9 and then , X or O number
+alert(number + " " + user)
+  if (number == '1' && user == 'X' ){
+  //put X into 1
+   the_square1('X')
+   //look()
+ }
+ if (number == '1' && user == 'O' ){
+ //put O into 1
+  the_square1('O')
+   //look();
+}
+/////
+if (number == '2' && user == 'X' ){
+//put X into 1
+ the_square2('X')
+  //look()
+}
+if (number == '2' && user == 'O' ){
+//put O into 1
+the_square2('O')
+ //look()
+}
+////
+if (number == '3' && user == 'X' ){
+//put X into 1
+ the_square3('X')
+  //look()
+}
+if (number == '3' && user == 'O' ){
+//put O into 1
+the_square3('O')
+ //look()
+}
+////
+if (number == '4' && user == 'X' ){
+//put X into 1
+ the_square4('X')
+  //look()
+}
+if (number == '4' && user == 'O' ){
+//put O into 1
+the_square4('O')
+ //look()
+}
+
+if (number == '5' && user == 'X' ){
+//put X into 1
+ the_square5('X')
+}
+if (number == '5' && user == 'O' ){
+//put O into 1
+the_square5('O')
+ //look()
+}
+
+if (number == '6' && user == 'X' ){
+//put X into 1
+ the_square6('X')
+}
+if (number == '6' && user == 'O' ){
+//put O into 1
+the_square6('O')
+ //look()
+}
+
+if (number == '7' && user == 'X' ){
+//put X into 1
+ the_square7('X')
+  //look()
+}
+if (number == '7' && user == 'O' ){
+//put O into 1
+the_square7('O')
+ //look()
+}
+
+if (number == '8' && user == 'X' ){
+//put X into 1
+ the_square8('X')
+  //look()
+}
+if (number == '8' && user == 'O' ){
+//put O into 1
+the_square8('O')
+ //look()
+}
+
+if (number == '9' && user == 'X' ){
+//put X into 1
+ the_square9('X')
+  //look()
+}
+if (number == '9' && user == 'O' ){
+//put O into 1
+the_square9('O')
+ //look()
+}
+
+} //end function
+
+
+
+//button square 1 X or O    button square 2  X or O  button square 3 X or O
+
+
+function the_square1(z){  //enter X or 0
+if (square1[0] == "-"){
+    if(z == 'X' ){
+      square1[0] = "X"
+      //look();
+    }
+    if ( z == 'O'){
+      square1[0] = "0"
+      //look();
+    }
+
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+
+function the_square2(z){  //enter X or 0
+if (square2[0] == "-"){
+    if(z == 'X' ){
+      square2[0] = "X"
+    }else{
+      square2[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+function the_square3(z){  //enter X or 0
+if (square3[0] == "-"){
+    if(z == 'X' ){
+      square3[0] = "X"
+    }else{
+      square3[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+//////////
+
+
+
+function the_square4(z){  //enter X or 0
+if (square4[0] == "-"){
+    if(z == 'X' ){
+      square4[0] = "X"
+    }else{
+      square4[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+
+function the_square5(z){  //enter X or 0
+if (square5[0] == "-"){
+    if(z == 'X' ){
+      square5[0] = "X"
+    }else{
+      square5[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+
+function the_square6(z){  //enter X or 0
+if (square6[0] == "-"){
+    if(z == 'X' ){
+      square6[0] = "X"
+    }else{
+      square6[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+//================
+
+function the_square7(z){  //enter X or 0
+if (square7[0] == "-"){
+    if(z == 'X' ){
+      square7[0] = "X"
+    }else{
+      square7[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+
+function the_square8(z){  //enter X or 0
+if (square8[0] == "-"){
+    if(z == 'X' ){
+      square8[0] = "X"
+    }else{
+      square8[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+
+function the_square9(z){  //enter X or 0
+if (square9[0] == "-"){
+    if(z == 'X' ){
+      square9[0] = "X"
+    }else{
+      square9[0] = "0"
+    }
+}//end outer if
+print_board()
+look();
+}//end funciton
+
+
+//put it in a div
+function print_board(){
+  alert(square1[0] + " " +square2[0]  + " " + square3[0]  + " " +square4[0] + " " +square5[0] + " " +square6[0] + " " +square7[0] + " " +square8[0] + " " + square9[0] )
+var a = " <table width = 200 border=1>"
+    a += "<tr><td>" + square1[0] + "</td><td>" + square2[0] + "</td><td>" + square3[0] + "</td></tr>"
+    a += "<tr><td>" + square4[0] + "</td><td>" + square5[0] + "</td><td>" + square6[0] + "</td></tr>"
+    a += "<tr><td>" + square7[0] + "</td><td>" + square8[0] + "</td><td>" + square9[0] + "</td></tr>"
+    a += "</table>"
+     document.getElementById('log').innerHTML = a
+
+   } //end function
+
+
+</script>
+
+</head>
+<body bgcolor = white onload= "main()">
+<div id="log">initial content</div>
+<form name = 'test'>
+square<br>
+  <input type = text name = "sq" size = 3><font color = white>___<input type = text name ='letter' size = 2>
+  </form>
+</body>
+</html>
